@@ -11,14 +11,12 @@ def blf_unzlib(inputBLF, outputBIN):
    # 解凍済みデータ保存先ファイル
    f2 = open(outputBIN, 'wb')
    
-   offset = 0
    filesize = len(blf_data)
    decompress_data = b''
    compress_data = b''
    
    # 先頭ヘッダからサイズ抽出
-   header_size = blf_data[4] + blf_data[5]*0x100
-   offset += alignment_chk(header_size)
+   offset = blf_data[4] + blf_data[5]*0x100
    
    cnt = 0  # 経過表示用カウンタ
    
